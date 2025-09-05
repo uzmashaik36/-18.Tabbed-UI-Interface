@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabbed UI Interface | CodeWithUzma</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #66023e;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #555;
+    }
+
+    .tab {
+      padding: 12px 20px;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: #bbb;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .tab.active {
+      color: #fff;
+      border-bottom: 2px solid #ff9800;
+    }
+
+    .tab-content {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      width: 350px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="home">Home</button>
+    <button class="tab" data-tab="about">About</button>
+    <button class="tab" data-tab="contact">Contact</button>
+  </div>
+
+  <div class="tab-content active" id="home">
+    <h2>Welcome to Home</h2>
+    <p>This is the home tab content.</p>
+  </div>
+  <div class="tab-content" id="about">
+    <h2>About Us</h2>
+    <p>This is the about tab content.</p>
+  </div>
+  <div class="tab-content" id="contact">
+    <h2>Contact</h2>
+    <p>This is the contact tab content.</p>
+  </div>
+
+  <footer>✨ Created with ❤️ by CodeWithUzma ✨</footer>
+
+  <script>
+    // Selecting all tabs and tab contents
+    const tabs = document.querySelectorAll(".tab");
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        // Remove 'active' class from all tabs
+        tabs.forEach(btn => btn.classList.remove("active"));
+        // Hide all contents
+        contents.forEach(content => content.classList.remove("active"));
+
+        // Add 'active' class to clicked tab
+        tab.classList.add("active");
+        // Show matching content
+        const target = document.getElementById(tab.dataset.tab);
+        target.classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>
